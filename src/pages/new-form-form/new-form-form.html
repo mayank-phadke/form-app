@@ -1,0 +1,56 @@
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Project Title</ion-label>
+      <ion-input type="name" (ionChange)="change()" [(ngModel)]="data.title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Company Name</ion-label>
+      <ion-input type="name" (ionChange)="change()" [(ngModel)]="data.company_name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>PID</ion-label>
+      <ion-input type="name" (ionChange)="change()" [(ngModel)]="data.pid"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Department</ion-label>
+      <ion-input type="name" (ionChange)="change()" [(ngModel)]="data.department"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Purpose of Visit</ion-label>
+      <ion-select [(ngModel)]="data.purpose" (ionChange)="change()">
+        <ion-option value="Installation" >Installation</ion-option>
+        <ion-option value="Testing" >Testing</ion-option>
+        <ion-option value="Service" >Service</ion-option>
+        <ion-option value="Material Delivery" >Material Delivery</ion-option>
+        <ion-option value="Other" >Other</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Details of Work</ion-label>
+      <ion-textarea type="text" (ionChange)="change()" [(ngModel)]="data.work_done"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Future Remark/ Advice (Optional)</ion-label>
+      <ion-textarea type="text" (ionChange)="change()" [(ngModel)]="data.future_remarks"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Pending Work (Optional)</ion-label>
+      <ion-textarea type="text" (ionChange)="change()" [(ngModel)]="data.pending_work"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Client Remark</ion-label>
+      <ion-input type="text" (ionChange)="change()" [(ngModel)]="data.client_remark"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-rating [numStars]="5" [readOnly]="false" [value]="0" (clicked)="starClicked($event)">
+      </ion-rating>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-item>
+    <button ion-button default float-right (click)="next()">Next</button>
+  </ion-item>
+</ion-footer>

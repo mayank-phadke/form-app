@@ -1,0 +1,18 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>New Form</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-tabs>
+    <ion-tab [root]="tab1Root" tabTitle="Details"></ion-tab>
+    <ion-tab [root]="tab2Root" tabTitle="Client"></ion-tab>
+    <ion-tab [root]="tab3Root" tabTitle="Signature"></ion-tab>
+  </ion-tabs>
+</ion-content>

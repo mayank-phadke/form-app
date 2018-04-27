@@ -1,0 +1,29 @@
+<ion-content padding>
+    <ion-row>
+        <ion-col col-12>
+            <ion-item no-lines>
+                Customer Sign
+                <button ion-button (click)="clearPad1()" float-right>Clear</button>
+                <br>
+                <br>
+                <signature-pad #SignaturePad1 [options]="signaturePadOptions" (onBeginEvent)="drawStart1()"></signature-pad>
+            </ion-item>
+        </ion-col>
+        <ion-col col-12>
+            <ion-item no-lines>
+                Executive Sign
+                <button ion-button (click)="clearPad2()" float-right>Clear</button>
+                <br>
+                <br>
+                <signature-pad #SignaturePad2 [options]="signaturePadOptions" (onBeginEvent)="drawStart2()"></signature-pad>
+            </ion-item>
+        </ion-col>
+    </ion-row>
+</ion-content>
+
+<ion-footer>
+    <ion-item>
+        <button ion-button default float-left outline (click)="previous()">Previous</button>
+        <button ion-button default float-right (click)="submit()">Submit</button>
+    </ion-item>
+</ion-footer>

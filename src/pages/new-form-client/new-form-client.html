@@ -1,0 +1,23 @@
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Client Name</ion-label>
+      <ion-input type="name" [(ngModel)]="data.client_name" (ionChange)="change()"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Designation</ion-label>
+      <ion-input type="name" [(ngModel)]="data.designation" (ionChange)="change()"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Contact Number</ion-label>
+      <ion-input type="phone" [(ngModel)]="data.contact_no" (ionChange)="change()"></ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-item>
+    <button ion-button default float-left outline (click)="previous()">Previous</button>
+    <button ion-button default float-right (click)="next()">Next</button>
+  </ion-item>
+</ion-footer>

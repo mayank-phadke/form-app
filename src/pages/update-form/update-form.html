@@ -1,0 +1,20 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let item of items" (click)="click(item)">
+      <span>{{item.val().company_name}}</span>
+      <span float-right>{{item.val().date}}</span>
+    </ion-item>
+  </ion-list>
+</ion-content>
