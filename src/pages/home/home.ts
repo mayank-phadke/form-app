@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { NewFormPage } from '../new-form/new-form';
 import { UpdateFormPage } from '../update-form/update-form';
@@ -10,7 +10,22 @@ import { UpdateFormPage } from '../update-form/update-form';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  employee = true;
+
+  constructor(public navCtrl: NavController, private loadingCtrl: LoadingController) {
+
+    let load = loadingCtrl.create({
+      content: "Loading, Please Wait"
+    })
+    load.present();
+
+    firebase.database().ref().child(firebase.auth().currentUser.uid).child("role").once("value", snap => {
+      load.dismiss()
+      if (snap.val() == "Employee")
+        this.employee = true
+      else
+        this.employee = false
+    })
 
   }
 

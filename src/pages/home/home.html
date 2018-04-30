@@ -7,26 +7,27 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-row>
-    <ion-col col-6>
+<ion-content padding style="text-align: center">
+  <img src="assets/imgs/logo.jpeg">
+  <ion-row style="text-align: center">
+    <ion-col class="col-xs-6" *ngIf="employee">
       <div (click)="new()" class="block" style="border-color: blue !important;">
         New
       </div>
     </ion-col>
-    <ion-col col-6>
+    <ion-col class="col-xs-6">
       <div (click)="update()" class="block" style="border-color: yellow !important;">
         Pending
       </div>
     </ion-col>
   </ion-row>
   <ion-row>
-    <ion-col col-6>
+    <ion-col class="col-xs-6">
       <div (click)="accepted()" class="block" style="border-color: green !important;">
         Accepted
       </div>
     </ion-col>
-    <ion-col col-6>
+    <ion-col class="col-xs-6">
       <div (click)="rejected()" class="block" style="border-color: red !important;">
         Rejected
       </div>
