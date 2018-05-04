@@ -14,8 +14,10 @@ export class DisplayFormPage {
   tab1Root = DisplayFormFormPage;
   tab2Root = DisplayFormClientPage;
   tab3Root = DisplayFormSignaturePage;
+  tab3Params
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.tab3Params = { approved: navParams.get('approved') }
   }
 
   ionViewDidLoad() {

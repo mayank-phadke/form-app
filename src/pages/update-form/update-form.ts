@@ -103,12 +103,12 @@ export class UpdateFormPage {
       console.log("role = " + this.role);
       console.log("approved = " + this.navParams.get('approved'));
 
-      this.navCtrl.setRoot(DisplayFormPage, {
+      this.navCtrl.push(DisplayFormPage, {
         approved: this.navParams.get('approved')
       });
     }
     else
-      this.navCtrl.setRoot(NewFormPage, {
+      this.navCtrl.push(NewFormPage, {
         data: true
       });
   }

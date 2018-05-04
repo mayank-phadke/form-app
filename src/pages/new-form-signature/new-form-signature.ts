@@ -159,7 +159,7 @@ export class NewFormSignaturePage {
         contact_no: data.client.contact_no,
         client_signature: data.signature.client_signature,
         emp_signature: data.signature.emp_signature,
-        approved: '',
+        approved: 'pending',
         date: moment().format('Do MMM YYYY, h:mm a')
       })
     } else {
@@ -179,7 +179,7 @@ export class NewFormSignaturePage {
         contact_no: data.client.contact_no,
         client_signature: data.signature.client_signature,
         emp_signature: data.signature.emp_signature,
-        approved: '',
+        approved: 'pending',
         date: moment().format('Do MMM YYYY, h:mm a')
       })
     }
@@ -192,7 +192,8 @@ export class NewFormSignaturePage {
       });
       toast.present();
 
-      this.app.getRootNavs()[0].push(HomePage);
+      this.navCtrl.setRoot(HomePage);
+      // this.app.getRootNavs()[0].push(HomePage);
     });
   }
 }

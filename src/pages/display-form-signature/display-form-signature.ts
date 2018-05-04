@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { data } from "../../environment/environment";
 import * as firebase from 'firebase';
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -24,9 +25,10 @@ export class DisplayFormSignaturePage {
     loading.present();
 
     firebase.database().ref().child(firebase.auth().currentUser.uid).on('value', snapshot => {
-      if (snapshot.child('role').val() == 'Supervisor')
+      if (snapshot.child('role').val() == 'Supervisor' && navParams.get('approved') == 'pending')
         this.showFooter = true;
-      else this.showFooter = false;
+      else
+        this.showFooter = false;
 
       loading.dismiss();
     })
@@ -46,25 +48,33 @@ export class DisplayFormSignaturePage {
     })
 
     loading.present();
-    let toast = this.toastCtrl.create();
+    let toast = this.toastCtrl.create({
+      duration: 2000
+    });
 
-    firebase.database().ref().child(firebase.auth().currentUser.uid)
-      .child('forms')
-      .child(data.key)
-      .child('approved')
-      .set(value)
-      .then(_ => {
-        loading.dismiss();
-        if (value)
-          toast.setMessage("Application Approved");
-        else
-          toast.setMessage("Application Rejected");
-        toast.present();
+    firebase.database().ref().once('value', snapshot => {
+      snapshot.forEach(childSnap => {
+
+        let ref = childSnap.child('forms').child(data.key);
+        if (ref.exists()) {
+          ref.ref.child('approved').set(value).then(_ => {
+            loading.dismiss();
+            if (value)
+              toast.setMessage("Application Approved");
+            else
+              toast.setMessage("Application Rejected");
+            toast.present();
+            this.navCtrl.setRoot(HomePage);
+          })
+            .catch(err => {
+              loading.dismiss();
+              toast.setMessage(err);
+              toast.present();
+            })
+        }
+
+        return false;
       })
-      .catch(err => {
-        loading.dismiss();
-        toast.setMessage(err);
-        toast.present();
-      })
+    })
   }
 }
